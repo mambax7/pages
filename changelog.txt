@@ -1,0 +1,126 @@
+=> version 1.0.7
+================
+
+  - Adding Full Security To Wf-channel see http://www.wf-projects.com/modules/ipboard/index.php?showtopic=591
+  - Bug fixed "Disable Comments" see http://www.wf-projects.com/modules/ipboard/index.php?showtopic=258
+  - Bug fixed "Admin section - rename menu"
+  - Bug fixed "WF-C 1.06 text formatting bug" see http://www.wf-projects.com/modules/ipboard/index.php?showtopic=315
+  - Bug fixed "backendjs.php" see http://www.wf-projects.com/modules/ipboard/index.php?showtopic=315
+  - Bug fixed "Page Menu Link Not Displayed On Link/refer Pages" ( also Templates fixed)
+  - Change Page Menu Link to a function.
+  - Add define("_MD_NORIGHTTOVIEWPAGE","You do not have permission to view this page"); to main.php
+  - Change in xoops_version.php variable $modversion['dirname'] not used now (
+   $xoopsModule = &$modhandler->getByDirname($modversion['dirname']);  )
+  - Now 100% ML hack ( marcan ) compatible, so it is recommanded not to use the index.php for wfchannel from the ML package
+  - modify link to wfsections2.com in wfchannel admin menu : Help Section, Report a bug section to wf-project site
+  - Add [pagebreak] tag
+  -Bug fixed "Some wrong links in the language files and the upgrade.php"
+  -Bug fixed "Refer a friend admin parameters : seems that mail default message is not taken into account in mail.">
+
+
+=> version 1.0.9b
+- copie des répertoires /modules/pages/html et /modules/pages/images dans le répertoire d'upload
+- traduction en french du contenu du fichier sql
+- fichier sql choisi en fonction de la langue utilisée dans XOOPS
+- correction erreur dans le xoops_version.php ligne 168 : $modversion['config'][3]['default'] = 'uploads/'.$modversion['dirname'].'/images/linkimages';
+
+
+=> version 1.0.9
+dans : admin/index.php
+
+- encryption du champs 'Titre du sous-menu'
+- encryption du champs 'Titre de la page'
+- encryption du champs 'Titre du sous-menu' (dans la partie création du formulaire )
+(les caracteres "'" tronquaient le texte a la sauvegarde)
+
+- intégration de l'editeur fck dans la partie de redaction des pages, dans la page de gestion du formulaire
+
+- ajout du champs search dans la BDD
+- ajout des fonctions de scan des fichiers html 'connectés' mais aussi des textes stockés dans la BDD
+- ajout de la copie automatique de l'image blank.png dans le repertoire des images attachées (si une image existait dans le dossier cela t'obligeais a la selectionner...)
+- ajout de la fonction de recherche sur les commentaires associés au module. (gestion des droits activée mais on "voit" tout de meme le lien dans la recherche)
+- ajout d'une option de configuration pour le type de menu de bas de page (horizontal, vertical)
+- modification du template pages_index.html
+- definition des variables associées aux langues
+- correction texte hardcode dans admin/upload.php
+- ajout variable de configuration pour le prefixe des images
+- remplacement "channelfile" par "pagefile"
+
+dans : language/french/main.php (idem dans english...)
+
+- define("_AM_EMAILADDRESS", "Use Senders Stored Email address?"); traduit
+- modification de typo a plusieurs endroits.
+- ajout de texte : define("_MD_OTHERPAGE","Autres pages") pour le menu de type vertical
+
+dans le language/french/modinfo.php
+
+- define("_MI_CHAN_MENUNAVTYP", "Type d'affichage du menu intégré en bas de page");
+- define("_MI_CHAN_MENUNAVTYPV", "Vertical");
+- define("_MI_CHAN_MENUNAVTYPH", "Horizontal");
+- rectification dee quelques WF-Channel restés dans les traductions
+
+dans le language/french/admin.php
+
+- define("_AM_UPLOADCHANTYP","Choisissez le type d'upload");
+- rectification dee quelques WF-Channel restés dans les traductions
+
+
+suppression dans le fichier template "pages_linktous.html" du Titre du sous menu (doublon par rapport a l'image + non conforme avec le descriptif dans l'admin de cette page)
+<div align= "center"><h3><{$lang_linktous}></h3></div>
+ajout d'une section micro bouton
+
+Correction traduction dans le fichier sql french "the authors"
+
+dans le block correction du texte hardcodé : "Aucune page"
+ajout dans les fichiers traduction : define("_MD_NOPAGE","Aucune page");
+Correction pour l prise en compte du module sitemap des seuls elements affichés dans le module sitemap
+
+modification du template pages_refer.html
+- espacement entre les boutons d'envoi et la déclaration de confidentialité.
+- ajout de define("_MD_SEND", "Envoyer"); et define("_MD_CLEAR", "Vider le contenu");
+modification dans correspondante dans le index.php L 328-329
+
+=> version 1.10
+modification dans les pages index.php et xoops_version.php des reference a 'pages' au profit d'une detection du repertoire d'installation (plus aisé pour cloner le module) modification egalement apportees pour l'appel a la base de donnee. (non encore fini....)
+
+ajout d'un lien d'edition dans chaque page pour l'administrateur du module (modification index.php + templates des pages.
+ajout d'une image spécifique dans le repertoire images du module
+ajout de define("_MD_MODIF", "Modifier cette page"); dans les fichiers langue
+
+modification de l'ordre de tri des pages dans le bloc de menu et dans la partie admin des pages
+augmentation de la largeur de l'editeur FCK dans la page admin/index
+correction de l'editeur fck pour autoriser l'upload d'images dans le bon repertoire /upload
+(mesure partielle... ne fonctionera pas si xoops n'est pas installé a la racine du serveur web.)
+
+modification du systeme de menu dans l'admin
+ajout d'un lien vers le repertoire help et le fichier help.php
+le contenu de l'aide vient des admin.php des repertoires langue
+define("_AM_HELP","contenu de la page d'aide");
+define("_AM_HELP","content of the help page");
+
+ajout d'un logo "pages" pour harmoniser
+ajout d'une image aide pour le lien vers l'aide
+ajout d'une image fleche pour le retour en bas de l'aide
+dans la page d'admin du module, section "page index" figure maintenant des liens séparés dans un bloc pour les "pages speciales" liens et recommander.
+
+09/01/06
+incorporation des fichiers corrigés par Hervé pour la compatibilité php 5.0.5 (index.php, metagen.php et htmlparser.inc)
+modification du backendjs.php
+- modification de la requète pour prendre en compte notamment les dates de validité des pages
+- modification du texte affiché (suppression de doublons eventuels entre titre et headline)
+mise en route d'un backend.php
+- creation du fichier (ispiré du backend.php de smartsection
+- création d'un template
+modification du template pages_linktous.html (reference a l'image des liens RSS)
+
+modification du fichier xoops_version pour increment des variables de configuration.
+modification de la page index de l'admin pour offrir une plus grande largeur dans l'editeur FCK
+definition de la largeur de l'editeur FCK a 99%
+modification de l'ordre de tri dans le bloc et dans le menu (Poids de la page puis en alpha sur le titre)
+
+
+
+
+TODO
+
+Tester si l'image est a blank pour afficher dans ce cas le titre du menu tout de meme

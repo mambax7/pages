@@ -1,0 +1,4 @@
+<script language='Javascript'>document.write('<div class="rss_title"><a href="http://127.0.0.1/x2013">XOOPS Site</a> Pages<br /></div>');
+document.write('<LI><span class="rss_body"><A HREF="http://127.0.0.1/x2013/modules/pages/index.php?pagenum=1" target=blank>Page de bienvenue</a></span><br />');
+document.write('<LI><span class="rss_body"><A HREF="http://127.0.0.1/x2013/modules/pages/index.php?pagenum=2" target=blank>presentation</a></span><br />');
+document.write('<div class="rss_footer">Updated : 9/1/2006 6:08</div>');</script>
